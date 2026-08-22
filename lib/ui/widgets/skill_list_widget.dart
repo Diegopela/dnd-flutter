@@ -1,3 +1,4 @@
+import '../../models/enums.dart';
 import 'package:flutter/material.dart';
 import '../../data/skill_repository.dart';
 import '../../models/character.dart';
