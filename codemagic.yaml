@@ -1,0 +1,34 @@
+workflows:
+  android-workflow:
+    name: Android (APK de debug)
+    max_build_duration: 30
+    instance_type: linux_x2
+    environment:
+      flutter: stable
+    scripts:
+      - name: Obtener dependencias
+        script: flutter pub get
+      - name: Analizar (no frena el build si hay warnings)
+        script: flutter analyze || true
+      - name: Compilar APK de debug
+        script: flutter build apk --debug
+    artifacts:
+      - build/app/outputs/flutter-apk/*.apk
+
+  ios-workflow:
+    name: iOS (sin firmar, para simulador/verificar que compila)
+    max_build_duration: 30
+    instance_type: mac_mini_m2
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Obtener dependencias
+        script: flutter pub get
+      - name: Analizar (no frena el build si hay warnings)
+        script: flutter analyze || true
+      - name: Compilar iOS sin firmar
+        script: flutter build ios --release --no-codesign
+    artifacts:
+      - build/ios/iphoneos/*.app
