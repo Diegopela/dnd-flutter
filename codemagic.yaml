@@ -1,20 +1,19 @@
 workflows:
   android-workflow:
-    name: Android (APK de debug)
-    max_build_duration: 30
-    instance_type: linux
-    environment:
-      flutter: stable
-    scripts:
-      - name: Obtener dependencias
-        script: flutter pub get
-      - name: Analizar (no frena el build si hay warnings)
-        script: flutter analyze || true
-      - name: Compilar APK de debug
-        script: flutter build apk --debug
-    artifacts:
-      - build/app/outputs/flutter-apk/*.apk
-
+  name: Android (APK de debug)
+  max_build_duration: 30
+  instance_type: mac_mini_m2    # en vez de linux
+  environment:
+    flutter: stable
+  scripts:
+    - name: Obtener dependencias
+      script: flutter pub get
+    - name: Analizar (no frena el build si hay warnings)
+      script: flutter analyze || true
+    - name: Compilar APK de debug
+      script: flutter build apk --debug
+  artifacts:
+    - build/app/outputs/flutter-apk/*.apk
   ios-workflow:
     name: iOS (sin firmar, para simulador/verificar que compila)
     max_build_duration: 30
