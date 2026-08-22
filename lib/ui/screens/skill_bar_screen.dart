@@ -1,4 +1,4 @@
-import '../../models/class_definitions.dart'
+import '../../models/class_definitions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../models/character.dart';
