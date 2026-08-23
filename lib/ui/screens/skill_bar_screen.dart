@@ -342,7 +342,7 @@ class _SkillBarBodyState extends State<_SkillBarBody> {
     );
   }
 
-  Widget _buildClassResources(BuildContext context, CharacterEntity c, dynamic classDef, bool hasBattleMaster) {
+  Widget _buildClassResources(BuildContext context, CharacterEntity c, ClassDefinition classDef, bool hasBattleMaster) {
     final provider = context.read<CharacterProvider>();
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
