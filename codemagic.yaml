@@ -1,4 +1,19 @@
 workflows:
+web-workflow:
+    name: Web (build estático)
+    max_build_duration: 30
+    instance_type: mac_mini_m2
+    environment:
+      flutter: stable
+    scripts:
+      - name: Obtener dependencias
+        script: flutter pub get
+      - name: Generar carpeta web si no existe
+        script: flutter create . --platforms=web
+      - name: Compilar para web
+        script: flutter build web
+    artifacts:
+      - build/web/**
   android-workflow:
     name: Android (APK de debug)
     max_build_duration: 30
